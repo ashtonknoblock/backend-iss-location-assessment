@@ -5,6 +5,7 @@ from turtle import Turtle
 
 
 def astronauts():
+    """get astonauts currently in space, and what ship they're on"""
     name = []
     ship = []
     r = requests.get('http://api.open-notify.org/astros.json')
@@ -44,6 +45,8 @@ def current_geo_coords():
 
 
 def draw():
+    """draw a map of the world and track the coordinates of ISS and Indianapolis.
+    check (in real time) when the next passover will be"""
     current_lat_long = current_geo_coords()
     latitude = int(float((current_lat_long[0])))
     longitude = int(float((current_lat_long[1])))
@@ -69,7 +72,7 @@ def draw():
     dot.color("yellow")
     dot.shape("circle")
     dot.setheading(90)
-    dot.pensize(2)
+    dot.shapesize(.25)
     dot.penup()
     """Indianapolis"""
     dot.goto(-86.1581, 39.7684)
@@ -94,7 +97,6 @@ def when_will_it_pass():
 
 if __name__ == "__main__":
     astronauts()
-    current_geo_coords()
     draw()
     
 
